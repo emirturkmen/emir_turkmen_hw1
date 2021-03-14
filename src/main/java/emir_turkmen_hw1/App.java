@@ -10,6 +10,8 @@ import static spark.Spark.post;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.logging.LogManager;
+import java.util.logging.Logger;
 
 import spark.ModelAndView;
 import spark.template.mustache.MustacheTemplateEngine;
@@ -21,6 +23,14 @@ public class App {
     }
 
     public static void main(String[] args) {
+        Logger logger = getLogger(App.class);
+
+        int port = Integer.parseInt(System.getenv("PORT"));
+        port(port);
+        logger.error("Current port number:" + port);
+
+
+
         get("/", (req, res) -> "Bil 481 HW1");
 
         get("/compute",
